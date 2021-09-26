@@ -15,6 +15,9 @@ ${sort_by_latest}                     xpath=//*[.='Terbaru']
 ${sort_by_cheapest}                   xpath=//*[.='Harga Terendah']
 ${sort_by_most_expensive}             xpath=//*[.='Harga Tertinggi']
 
+${text_result_price}                  //p[@data-testid='price-final']
+${text_result_rating}                 //span[@data-testid='rating-text']
+
 
 *** Keywords ***
 Validate search result
@@ -78,4 +81,38 @@ Sort by most expensive
   Wait until Element is visible       ${sort_by_most_expensive}
   Click Element                       ${sort_by_most_expensive}
 
+Verify Price Is More Than MinPrice and Less Than MaxPrice
+  [Arguments]    ${MinPrice}      ${maxPrice}
 
+  Wait Until Element Is Visible                   ${text_result_price}
+  ${INDEX}                Set Variable    1
+  ${COUNT_ELEMENTS}       Get Element Count      ${text_result_price}
+  FOR     ${ELEMENT}  IN RANGE    ${COUNT_ELEMENTS}
+    Log    ${ELEMENT}
+    ${ELEMENT_INDEX}    Catenate        (${text_result_price})[${INDEX}]
+    ${TEXT_PRICE}    Get Text        ${ELEMENT_INDEX}
+    ${TEXT_PRICE}    Remove String   ${TEXT_PRICE}   Rp  .   ,   ${SPACE}
+    ${TEXT_PRICE}    Convert To Number    ${TEXT_PRICE}
+    Should Be True      ${TEXT_PRICE} >= ${MinPrice}
+    Should Be True      ${TEXT_PRICE} <= ${maxPrice}
+    ${index}=    Evaluate    ${index} + 1
+  END
+
+Verify Sort Rating Tertinggi
+  Wait Until Element Is Visible                   ${text_result_rating}
+  ${INDEX}                Set Variable    1
+  ${INDEX_2}              Set Variable    2
+  ${COUNT_ELEMENTS}       Get Element Count      ${text_result_rating}
+  FOR     ${ELEMENT}  IN RANGE    ${COUNT_ELEMENTS}-1
+    Log    ${ELEMENT}
+    ${ELEMENT_INDEX_1}    Catenate        (${text_result_rating})[${INDEX}]
+    ${TEXT_RATING_1}      Get Text        ${ELEMENT_INDEX_1}
+    ${ELEMENT_INDEX_2}    Catenate        (${text_result_rating})[${INDEX_2}]
+    ${TEXT_RATING_2}      Get Text        ${ELEMENT_INDEX_2}
+
+    IF  ${TEXT_RATING_1} < ${TEXT_RATING_2}
+        Fail    Sort Failed
+    END
+    ${INDEX}=    Evaluate    ${INDEX} + 1
+    ${INDEX_2}=  Evaluate  ${INDEX_2} + 1
+  END

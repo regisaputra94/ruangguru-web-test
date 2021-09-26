@@ -36,7 +36,7 @@ TC003 Search With Input Keyword and Filter by Price
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Filter by price
-    Sleep   5
+    Searchpage.Verify Price Is More Than MinPrice and Less Than MaxPrice        0       100000
 
 TC004 Search With Input Keyword and Filter by Duration
     [Documentation]  Search With Input Keyword and Filter by Price
@@ -47,7 +47,7 @@ TC004 Search With Input Keyword and Filter by Duration
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Filter by duration
-    Sleep   5
+    
 
 TC005 Search With Input Keyword and Sort by Rating
     [Documentation]  Search With Input Keyword and Sort by Rating
@@ -58,7 +58,7 @@ TC005 Search With Input Keyword and Sort by Rating
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Sort by rating
-    Sleep   5
+    Searchpage.Verify Sort Rating Tertinggi
 
 TC006 Search With Input Keyword and Sort by Review
     [Documentation]  Search With Input Keyword and Sort by Review
