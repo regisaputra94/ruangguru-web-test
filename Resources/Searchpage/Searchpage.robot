@@ -116,3 +116,51 @@ Verify Sort Rating Tertinggi
     ${INDEX}=    Evaluate    ${INDEX} + 1
     ${INDEX_2}=  Evaluate  ${INDEX_2} + 1
   END
+
+Verify Sort Cheapest Price
+  Wait Until Element Is Visible                   ${text_result_price}
+  ${INDEX}                Set Variable    1
+  ${INDEX_2}              Set Variable    2
+  ${COUNT_ELEMENTS}       Get Element Count      ${text_result_price}
+  FOR     ${ELEMENT}  IN RANGE    ${COUNT_ELEMENTS}-1
+      Log    ${ELEMENT}
+      ${ELEMENT_INDEX_1}    Catenate        (${text_result_price})[${INDEX}]
+      ${TEXT_1}      Get Text             ${ELEMENT_INDEX_1}
+      ${TEXT_1}      Remove String        ${TEXT_1}   Rp  .   ,   ${SPACE}
+      ${TEXT_1}      Convert To Number    ${TEXT_1}
+
+      ${ELEMENT_INDEX_2}    Catenate        (${text_result_price})[${INDEX_2}]
+      ${TEXT_2}      Get Text        ${ELEMENT_INDEX_2}
+      ${TEXT_2}      Get Text             ${ELEMENT_INDEX_1}
+      ${TEXT_2}      Remove String        ${TEXT_2}   Rp  .   ,   ${SPACE}
+      ${TEXT_2}      Convert To Number    ${TEXT_2}
+
+      IF  ${TEXT_1} > ${TEXT_2}
+          Fail    Sort Cheapest Price Failed
+      END
+      ${INDEX}=    Evaluate    ${INDEX} + 1
+      ${INDEX_2}=  Evaluate  ${INDEX_2} + 1
+  END
+
+Verify Sort Most Expensive Price
+    Wait Until Element Is Visible                   ${text_result_price}
+    ${INDEX}                Set Variable    1
+    ${INDEX_2}              Set Variable    2
+    ${COUNT_ELEMENTS}       Get Element Count      ${text_result_price}
+    FOR     ${ELEMENT}  IN RANGE    ${COUNT_ELEMENTS}-1
+        Log    ${ELEMENT}
+        ${ELEMENT_INDEX_1}    Catenate        (${text_result_price})[${INDEX}]
+        ${TEXT_1}      Get Text             ${ELEMENT_INDEX_1}
+        ${TEXT_1}      Remove String        ${TEXT_1}   Rp  .   ,   ${SPACE}
+        ${TEXT_1}      Convert To Number    ${TEXT_1}
+
+        ${ELEMENT_INDEX_2}    Catenate        (${text_result_price})[${INDEX_2}]
+        ${TEXT_2}      Get Text        ${ELEMENT_INDEX_2}
+        ${TEXT_2}      Get Text             ${ELEMENT_INDEX_1}
+        ${TEXT_2}      Remove String        ${TEXT_2}   Rp  .   ,   ${SPACE}
+        ${TEXT_2}      Convert To Number    ${TEXT_2}
+
+        Should Be True      ${TEXT_1} >= ${TEXT_2}
+        ${INDEX}=    Evaluate    ${INDEX} + 1
+        ${INDEX_2}=  Evaluate  ${INDEX_2} + 1
+    END

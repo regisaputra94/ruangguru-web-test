@@ -91,7 +91,7 @@ TC008 Search With Input Keyword and Sort by Cheapest Price
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Sort by cheapest
-    Sleep   5
+    Searchpage.Verify Sort Cheapest Price
 
 TC009 Search With Input Keyword and Sort by Most Expensive Price
     [Documentation]  Search With Input Keyword and Sort by Most Expensive Price
@@ -102,4 +102,4 @@ TC009 Search With Input Keyword and Sort by Most Expensive Price
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Sort by most expensive
-    Sleep   5
+    Searchpage.Verify Sort Most Expensive Price
