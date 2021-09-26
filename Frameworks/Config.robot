@@ -1,5 +1,5 @@
 *** Variables ***
-${BROWSER}                  mychrome
+${BROWSER}                  chrome
 ${DEFAULT_TIMEOUT}          20
 ${LONG_TIMEOUT}             40
 ${DELAY}                    0.2
