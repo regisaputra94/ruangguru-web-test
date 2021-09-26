@@ -48,3 +48,58 @@ TC004 Search With Input Keyword and Filter by Duration
     Searchpage.Validate search result
     Searchpage.Filter by duration
     Sleep   5
+
+TC005 Search With Input Keyword and Sort by Rating
+    [Documentation]  Search With Input Keyword and Sort by Rating
+    [Tags]  Regression  Smoke
+
+    Homepage.Verify Homepage Opened
+    Homepage.Input 'keyword' in field search                java
+    Homepage.Click search icon
+    Searchpage.Validate search result
+    Searchpage.Sort by rating
+    Sleep   5
+
+TC006 Search With Input Keyword and Sort by Review
+    [Documentation]  Search With Input Keyword and Sort by Review
+    [Tags]  Regression  Smoke
+
+    Homepage.Verify Homepage Opened
+    Homepage.Input 'keyword' in field search                java
+    Homepage.Click search icon
+    Searchpage.Validate search result
+    Searchpage.Sort by review
+    Sleep   5
+
+TC007 Search With Input Keyword and Sort by Latest
+    [Documentation]  Search With Input Keyword and Sort by Latest
+    [Tags]  Regression  Smoke
+
+    Homepage.Verify Homepage Opened
+    Homepage.Input 'keyword' in field search                java
+    Homepage.Click search icon
+    Searchpage.Validate search result
+    Searchpage.Sort by latest
+    Sleep   5
+    
+TC008 Search With Input Keyword and Sort by Cheapest Price
+    [Documentation]  Search With Input Keyword and Sort by Cheapest Price
+    [Tags]  Regression  Smoke
+
+    Homepage.Verify Homepage Opened
+    Homepage.Input 'keyword' in field search                java
+    Homepage.Click search icon
+    Searchpage.Validate search result
+    Searchpage.Sort by cheapest
+    Sleep   5
+
+TC009 Search With Input Keyword and Sort by Most Expensive Price
+    [Documentation]  Search With Input Keyword and Sort by Most Expensive Price
+    [Tags]  Regression  Smoke
+
+    Homepage.Verify Homepage Opened
+    Homepage.Input 'keyword' in field search                java
+    Homepage.Click search icon
+    Searchpage.Validate search result
+    Searchpage.Sort by most expensive
+    Sleep   5
