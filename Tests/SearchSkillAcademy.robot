@@ -54,7 +54,7 @@ TC005 Search With Input Keyword and Sort by Rating
     [Tags]  Regression  Smoke
 
     Homepage.Verify Homepage Opened
-    Homepage.Input 'keyword' in field search                java
+    Homepage.Input 'keyword' in field search                Bahasa inggris
     Homepage.Click search icon
     Searchpage.Validate search result
     Searchpage.Sort by rating
